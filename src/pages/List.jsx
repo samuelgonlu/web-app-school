@@ -5,7 +5,7 @@ import { FaPencilAlt, FaTrash  }from "react-icons/fa";
 
 const url ='http://localhost:3300/api/courses/';
 
-class Dashboard extends Component{
+class List extends Component{
     state={
         data:[],
         modalInsertar: false,
@@ -87,27 +87,35 @@ class Dashboard extends Component{
             <div className='main_container limit-div'>
                 <div className='titulo-head'>
                     <div className='subtitle'>
-                        <h1 className='mb-5'>Dashboard</h1>
+                        <h1 className='mb-5'>List Courses</h1>
                     </div>
                 </div>
                 <div className='btn-new'><button typeof="button" onClick={()=>{this.setState({form: {name:'', credits:0, description: '', students:0}, tipoModal: 'insertar'}); this.modalInsertar()}} className="btn btn-success mb-4">New Course</button></div>   
-                <div className='cards-responsive'>
-                    { this.state.data.map((course, i)=>{
-                        return(
-                            <div key={i} className="mr-p card bg-light mb-3 d-inline-block">
-                                <div className="card-header">Id: {course._id}</div>
-                                <div className="card-body">
-                                    <h5 className="card-title">{course.name}</h5>
-                                    <p className="card-text">Credits: <b>{course.credits}</b><br />
-                                        Students: <b>{course.students}</b><br />
-                                        Description: {course.description}
-                                    </p><br />
-                                    <button typeof="button" onClick={async()=>{await this.seleccionarCourse(course); await this.modalInsertar()}} className="mr-p btn btn-primary"><FaPencilAlt /> Ver/Editar</button>
-                                    <button typeof="button" onClick={async()=>{await this.seleccionarCourse(course); await this.setState({modalEliminar: true})}} className="btn btn-danger"><FaTrash /> Eliminar</button>
-                                </div>
-                            </div>
-                        )
-                    }) }
+                <div>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">Id</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Credits</th>
+                                <th scope="col"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            { this.state.data.map((course, i)=>{
+                                return(
+                                    <tr>
+                                        <th scope="row">{course._id}</th>
+                                        <td>{course.name}</td>
+                                        <td>{course.credits}</td>
+                                        <td><button typeof="button" onClick={async()=>{await this.seleccionarCourse(course); await this.modalInsertar()}} className="mr-p btn btn-primary mt-2"><FaPencilAlt /></button>
+                                        <button typeof="button" onClick={async()=>{await this.seleccionarCourse(course); await this.setState({modalEliminar: true})}} className="btn btn-danger mt-2"><FaTrash /></button></td>
+                                    </tr>
+                                )
+                            }) }
+                        </tbody>
+                    </table>
                 </div>
                 <Modal isOpen={this.state.modalInsertar}>
                     <ModalHeader style={{display: 'block'}}>
@@ -158,4 +166,4 @@ class Dashboard extends Component{
     };
 };
 
-export default Dashboard;
+export default List;

@@ -3,20 +3,32 @@
     padding:0;
     text-decoration: none;
 }
-.container{
+.main-content{
     display:flex;
+    width: 100%;
+    padding:0;
+      margin:0;
 }
 main{
-    width: calc(100%-50px);
+    height: 100%;
+    width: 100%;
     padding: 20px;
     z-index: 0;
-    
+}
+.save-btn{
+    float: right;
+}
+.mr-p{
+    margin-right: 20px;
+}
+.limit-div{
+    height: 90vh;
+    overflow-y: scroll;
 }
 .sidebar{
     background: #ddf;
     color: #333;
     height: 100vh;
-    width: 100px;
     transition: all 0.5s;
     z-index: 100;
 }
@@ -39,6 +51,10 @@ main{
     padding: 10px 15px;
     gap: 15px;
     transition: all 0.5s;
+    text-decoration: none;
+}
+.card{
+    width: 300px;
 }
 .link:hover{
     background:lightskyblue;
@@ -49,12 +65,25 @@ main{
     background: lightskyblue;
     color: #000;
 }
+.main_container{
+    width: 100%;
+}
+.titulo-head{
+   text-align: center;
+   color: #f5f5f5;
+    background-color: #20a7ff;
+}
 .icon, .link_text{
     font-size: 20px;
+    text-decoration: none;
 }
 @media only screen and (max-width: 960px){
     main{
         position: absolute;
-        margin-left: 50px;
+        width: 95%;
+        margin-left: 40px;
+    }
+    .cards-responsive, .btn-new{
+        text-align: center;
     }
 }
