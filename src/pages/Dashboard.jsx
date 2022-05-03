@@ -2,22 +2,12 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
 import { FaPencilAlt, FaTrash  }from "react-icons/fa";
+import {urlbase, state_base} from "../data/control"
 
-const url ='http://localhost:3300/api/courses/';
+const url =urlbase;
 
 class Dashboard extends Component{
-    state={
-        data:[],
-        modalInsertar: false,
-        modalEliminar: false,
-        form:{
-            name: '',
-            credits: '',
-            description: '',
-            students: 0,
-            tipoModal: ''
-        }
-    };
+    state=state_base
     peticionGET=()=>{
         axios.get(url).then(response=>{
             this.setState({data: response.data.result});
