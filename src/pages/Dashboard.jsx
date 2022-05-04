@@ -118,7 +118,7 @@ class Dashboard extends Component{
                             <input className="form-control" type="text" name="students" id="students" readOnly onChange={this.handleChange} value={form?form.students: '0'}/>
                             <br />
                             <label htmlFor="description">Description</label>
-                            <input className="form-control" type="text" name="details" id="details" onChange={this.handleChange} value={form?form.description:''}/>
+                            <input className="form-control" type="text" name="description" id="description" onChange={this.handleChange} value={form?form.description:''}/>
                         </div>
                     </ModalBody>
                     <ModalFooter>
